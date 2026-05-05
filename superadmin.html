@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Super Admin CMS - SEO Optimizer</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <header>
+        <div class="container navbar">
+            <a href="index.html" class="logo">Vektora <span style="font-size: 1rem; color: var(--danger);">SUPER ADMIN</span></a>
+            <div class="nav-actions">
+                <button id="btn-logout" class="btn btn-outline">LOGOUT</button>
+            </div>
+        </div>
+    </header>
+
+    <main class="container">
+        <div class="section-title">
+            <h2 id="cms-title">Buat Artikel Baru & Analisis SEO</h2>
+        </div>
+
+        <div class="super-admin-layout">
+            <!-- Left: Editor -->
+            <div class="editor-panel">
+                <form id="admin-form">
+                    <input type="hidden" id="form-id">
+                    <div class="form-group">
+                        <label for="form-title">Judul Berita (SEO Keyword)</label>
+                        <input type="text" id="form-title" class="form-control" placeholder="Maksimal 60 karakter untuk SEO terbaik">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="form-category">Kanal Berita</label>
+                        <select id="form-category" class="form-control">
+                            <option value="News">News</option>
+                            <option value="Otomotif">Otomotif</option>
+                            <option value="Musik">Musik</option>
+                            <option value="Sport">Sport</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="form-tags">Hashtags (Google Trend Keywords)</label>
+                        <input type="text" id="form-tags" class="form-control" placeholder="Otomotif, Musik, Trend2026 (Pisahkan dengan koma)">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="form-summary">Meta Description / Ringkasan</label>
+                        <textarea id="form-summary" class="form-control" style="min-height: 80px;" placeholder="Ringkasan singkat yang muncul di pencarian Google"></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="form-content">Isi Artikel</label>
+                        <textarea id="form-content" class="form-control" style="min-height: 400px;" placeholder="Ketikkan isi berita Anda di sini. Minimal 300 kata untuk SEO yang optimal."></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="form-image">Upload Foto Artikel</label>
+                        <input type="file" id="form-image" class="form-control" accept="image/*">
+                        <div id="image-preview" style="margin-top: 10px; display: none;">
+                            <img id="preview-img" src="" style="max-width: 100%; height: 200px; object-fit: cover; border-radius: 4px;">
+                        </div>
+                    </div>
+
+                    <button type="submit" id="btn-submit" class="btn btn-primary" style="width:100%; padding: 1rem; font-size: 1.1rem; margin-top:1rem;">UPLOAD ARTIKEL KE WEBSITE RESMI</button>
+                    <button type="button" id="btn-cancel" class="btn btn-outline" style="width:100%; margin-top:0.5rem; display:none;">BATAL EDIT</button>
+                </form>
+            </div>
+
+            <!-- Right: SEO Analyzer -->
+            <div class="seo-panel">
+                <h3 style="text-align:center; margin-bottom: 2rem;">Skor SEO Artikel</h3>
+                
+                <div id="seo-score-circle" class="seo-score-circle seo-bad">
+                    <span id="seo-score-value">0%</span>
+                </div>
+
+                <div class="seo-checklist">
+                    <div id="check-title" class="seo-item">✗ Judul terlalu pendek</div>
+                    <div id="check-summary" class="seo-item">✗ Ringkasan terlalu pendek</div>
+                    <div id="check-content" class="seo-item">✗ Konten kurang dari 300 kata</div>
+                    <div id="check-tags" class="seo-item">✗ Tambahkan minimal 3 hashtag</div>
+                </div>
+
+                <p style="margin-top: 2rem; font-size: 0.85rem; color: var(--text-secondary); text-align:center;">
+                    Pastikan skor mencapai warna <strong style="color:var(--success)">Hijau (80%+)</strong> agar artikel mudah ditemukan di Google Trends.
+                </p>
+            </div>
+        </div>
+
+        <div class="section-title" style="margin-top: 4rem;">
+            <h2>Kelola Semua Artikel</h2>
+        </div>
+        <div style="background: var(--bg-secondary); border-radius: var(--radius-md); overflow: hidden; border: 1px solid var(--border-color);">
+            <table id="article-table">
+                <thead>
+                    <tr>
+                        <th>Judul</th>
+                        <th>Kanal</th>
+                        <th>Tanggal</th>
+                        <th>Views</th>
+                        <th>Aksi</th>
+                    </tr>
+                </thead>
+                <tbody id="article-list">
+                    <!-- Injected via JS -->
+                </tbody>
+            </table>
+        </div>
+    </main>
+
+    <script src="js/app.js"></script>
+    <script src="js/seo.js"></script>
+</body>
+</html>
